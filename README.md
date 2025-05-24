@@ -57,12 +57,6 @@ This Flutter application demonstrates text recognition and speech-to-text capabi
 - [speech_to_text](https://pub.dev/packages/speech_to_text): For converting speech to text.
 - [image_picker](https://pub.dev/packages/image_picker): For accessing camera and storage.
 
-## Screenshots
-<div style="display: flex; justify-content: space-between;">
-  <img src="https://github.com/user-attachments/assets/dc231215-2dc9-4fa6-a2b1-693173ef06f3" width="30%" alt="Screenshot 1">
-  <img src="https://github.com/user-attachments/assets/53db773a-8721-490e-82b5-387894f4b108" width="30%" alt="Screenshot 2">
-  <img src="https://github.com/user-attachments/assets/5fd1a94c-68e4-44b2-a5bc-b8a31ebc48d0" width="30%" alt="Screenshot 3">
-</div>
 
 
 
