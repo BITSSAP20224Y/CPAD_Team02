@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Supply Chain Management API Docs</title>
+  <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css">
+</head>
+<body>
+  <div id="swagger-ui"></div>
+  <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"></script>
+  <script>
+    const spec = {
+      openapi: "3.0.0",
+      info: {
+        title: "Supply Chain Management System API",
+        version: "1.0.0",
+        description: "OpenAPI Specification for Product, Inventory, and Order microservices"
+      },
+      servers: [
+        { url: "http://localhost:9090", description: "Product Service" },
+        { url: "http://localhost:9091", description: "Inventory Service" },
+        { url: "http://localhost:9092", description: "Order Service" }
+      ],
+      paths: {
+        "/api/products": {
+          get: {
+            summary: "List all products",
+            responses: {
+              200: {
+                description: "Successful response",
+                content: {
+                  "application/json": {
+                    schema: { type: "array", items: { $ref: "#/components/schemas/Product" } }
+                  }
+                }
+              }
+            }
+          },
+          post: {
+            summary: "Add a new product",
+            requestBody: {
+              required: true,
+              content: {
+                "application/json": {
+                  schema: { $ref: "#/components/schemas/Product" }
+                }
+              }
+            },
+            responses: { 201: { description: "Product created" } }
+          }
+        },
+        "/api/inventory": {
+          get: {
+            summary: "List all inventory records",
+            responses: {
+              200: {
+                description: "Successful response",
+                content: {
+                  "application/json": {
+                    schema: { type: "array", items: { $ref: "#/components/schemas/Inventory" } }
+                  }
+                }
+              }
+            }
+          },
+          post: {
+            summary: "Add inventory record",
+            requestBody: {
+              required: true,
+              content: {
+                "application/json": {
+                  schema: { $ref: "#/components/schemas/Inventory" }
+                }
+              }
+            },
+            responses: {
+              201: { description: "Inventory added" },
+              400: { description: "Invalid or duplicate entry" }
+            }
+          }
+        },
+        "/api/orders": {
+          get: {
+            summary: "List all orders",
+            responses: {
+              200: {
+                description: "Successful response",
+                content: {
+                  "application/json": {
+                    schema: { type: "array", items: { $ref: "#/components/schemas/Order" } }
+                  }
+                }
+              }
+            }
+          },
+          post: {
+            summary: "Place an order",
+            requestBody: {
+              required: true,
+              content: {
+                "application/json": {
+                  schema: { $ref: "#/components/schemas/Order" }
+                }
+              }
+            },
+            responses: {
+              201: { description: "Order placed successfully" },
+              400: { description: "Invalid order or insufficient inventory" }
+            }
+          }
+        }
+      },
+      components: {
+        schemas: {
+          Product: {
+            type: "object",
+            properties: {
+              id: { type: "integer" },
+              name: { type: "string" },
+              description: { type: "string" },
+              price: { type: "number" }
+            }
+          },
+          Inventory: {
+            type: "object",
+            properties: {
+              id: { type: "integer" },
+              productId: { type: "integer" },
+              quantity: { type: "integer" }
+            }
+          },
+          Order: {
+            type: "object",
+            properties: {
+              id: { type: "integer" },
+              productId: { type: "integer" },
+              quantity: { type: "integer" },
+              totalAmount: { type: "number" }
+            }
+          }
+        }
+      }
+    };
+
+    SwaggerUIBundle({
+      spec,
+      dom_id: '#swagger-ui',
+      presets: [SwaggerUIBundle.presets.apis],
+      layout: "BaseLayout"
+    });
+  </script>
+</body>
+</html>
