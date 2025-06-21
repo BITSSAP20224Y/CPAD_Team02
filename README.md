@@ -1,5 +1,7 @@
 # CPAD_Team02
 
+The first assignment includes all files and folders located in the root directory, while the second assignment is contained within the "Assignment 2" folder.
+
 - Arghya Sengupta - 2022HS70056
 - Shubhankar Dey - 2022HS70018
 - Tapabrota De - 2022HS70004
